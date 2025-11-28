@@ -9,13 +9,16 @@ const Footer: React.FC = () => {
         <div className="footer-newsletter">
           <h3>Mantenete al día</h3>
           <p>Suscribite para recibir ofertas y novedades.</p>
-          <form className="newsletter-form">
+          <form className="newsletter-form" onSubmit={(e) => {
+            e.preventDefault();
+            alert('Gracias por suscribirte! Recibirás novedades y promociones pronto.');
+          }}>
             <input type="email" placeholder="Ingresá tu email" required />
             <button type="submit" className="btn btn-accent">Suscribirme</button>
           </form>
         </div>
 
-        {/* Navigation Links */}
+        {/* Navegacion */}
         <div className="footer-column">
           <h3>Secciones</h3>
           <ul>

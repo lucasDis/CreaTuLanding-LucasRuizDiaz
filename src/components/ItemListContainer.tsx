@@ -7,9 +7,14 @@ import AboutSection from './AboutSection';
 
 
 
-const ItemListContainer: React.FC = () => {
+interface ItemListContainerProps {
+  greeting?: string;
+}
+
+const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
   return (
     <div className="item-list-container">
+      {greeting && <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'var(--color-primary)' }}>{greeting}</h2>}
       {/* Estructura principal de la página de inicio */}
       <HeroSection />
       <PromoBanner />

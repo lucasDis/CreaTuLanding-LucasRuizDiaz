@@ -48,16 +48,13 @@ const NavBar: React.FC = () => {
           {/* Enlaces de navegación */}
           <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
-              <Link to="/category/Herramientas" className="nav-link" onClick={() => setIsOpen(false)}>Herramientas</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/category/Materiales" className="nav-link" onClick={() => setIsOpen(false)}>Materiales</Link>
+              <Link to="/category/Productos" className="nav-link" onClick={() => setIsOpen(false)}>Productos</Link>
             </li>
           </ul>
 
           {/* Widget del carrito */}
           <div className="cart-container">
-              <CartWidget onClick={toggleCart} />
+            <CartWidget onClick={toggleCart} />
           </div>
         </div>
       </nav>

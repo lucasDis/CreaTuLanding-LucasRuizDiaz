@@ -11,10 +11,6 @@
     <br />
     <br />
     <a href="#capturas-de-pantalla">Ver Demo</a>
-    ·
-    <a href="#instalación">Reportar Bug</a>
-    ·
-    <a href="#instalación">Solicitar Feature</a>
   </p>
 </div>
 

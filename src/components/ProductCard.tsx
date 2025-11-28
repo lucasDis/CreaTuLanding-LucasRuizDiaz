@@ -1,4 +1,3 @@
-```typescript
 import React from 'react';
 import { useCart } from '../context/CartContext';
 
@@ -7,7 +6,7 @@ interface ProductCardProps {
   title: string;
   description: string;
   image: string;
-  price?: number; // Precio del producto
+  price?: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ id, title, description, image, price = 10000 }) => {
@@ -42,4 +41,3 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, description, image
 };
 
 export default ProductCard;
-```
