@@ -1,29 +1,38 @@
 import React from 'react';
 
-const FilterSidebar: React.FC = () => {
+interface FilterSidebarProps {
+  onFilterChange?: (minPrice: number, maxPrice: number) => void;
+}
+
+const FilterSidebar: React.FC<FilterSidebarProps> = ({ onFilterChange }) => {
+  const handlePriceFilter = (min: number, max: number) => {
+    if (onFilterChange) {
+      onFilterChange(min, max);
+    }
+  };
+
   return (
     <aside className="filter-sidebar">
       <h3>Filtros</h3>
-      
+
       <div className="filter-group">
         <h4>Precio</h4>
-        <label><input type="checkbox" /> $0 - $1000</label>
-        <label><input type="checkbox" /> $1000 - $5000</label>
-        <label><input type="checkbox" /> Más de $5000</label>
-      </div>
-
-      <div className="filter-group">
-        <h4>Marca</h4>
-        <label><input type="checkbox" /> Bosch</label>
-        <label><input type="checkbox" /> Stanley</label>
-        <label><input type="checkbox" /> Makita</label>
-        <label><input type="checkbox" /> DeWalt</label>
-      </div>
-
-      <div className="filter-group">
-        <h4>Disponibilidad</h4>
-        <label><input type="checkbox" /> En Stock</label>
-        <label><input type="checkbox" /> Envío Inmediato</label>
+        <label>
+          <input type="radio" name="price" onChange={() => handlePriceFilter(0, Infinity)} defaultChecked />
+          Todos
+        </label>
+        <label>
+          <input type="radio" name="price" onChange={() => handlePriceFilter(0, 50000)} />
+          Hasta $50,000
+        </label>
+        <label>
+          <input type="radio" name="price" onChange={() => handlePriceFilter(50000, 100000)} />
+          $50,000 - $100,000
+        </label>
+        <label>
+          <input type="radio" name="price" onChange={() => handlePriceFilter(100000, Infinity)} />
+          Más de $100,000
+        </label>
       </div>
     </aside>
   );

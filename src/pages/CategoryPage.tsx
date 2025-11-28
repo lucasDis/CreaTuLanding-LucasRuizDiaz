@@ -1,36 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FilterSidebar from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
-import Breadcrumb from '../components/Breadcrumb';
+import Pagination from '../components/Pagination';
+import { getProductsByCategory, type Product } from '../data/products';
 
 const CategoryPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [priceFilter, setPriceFilter] = useState<{ min: number; max: number }>({ min: 0, max: Infinity });
+  const itemsPerPage = 12;
 
-  // Mock products based on category (simplified logic)
-  const products = [
-    { id: '1', title: 'Amoladora Angular 115mm 820W', description: 'Black + Decker G720N.', image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=60', price: 85000 },
-    { id: '2', title: 'Amoladora Angular 115mm 1050W', description: 'STANLEY SGS1045.', image: 'https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?auto=format&fit=crop&w=500&q=60', price: 110000 },
-    { id: '3', title: 'Amoladora Angular 115mm 700W', description: 'DEWALT DWE4010.', image: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=500&q=60', price: 135000 },
-    { id: '4', title: 'Escalera Aluminio Multiuso 4x4', description: 'Articulada, múltiples posiciones.', image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=500&q=60', price: 180000 },
-  ];
+  useEffect(() => {
+    setLoading(true);
+    setCurrentPage(1);
+
+    if (id) {
+      getProductsByCategory(id)
+        .then((data) => {
+          setProducts(data);
+          setFilteredProducts(data);
+        })
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
+    }
+  }, [id]);
+
+  // Apply price filter
+  useEffect(() => {
+    const filtered = products.filter(p => p.price >= priceFilter.min && p.price <= priceFilter.max);
+    setFilteredProducts(filtered);
+    setCurrentPage(1);
+  }, [priceFilter, products]);
+
+  const handleFilterChange = (min: number, max: number) => {
+    setPriceFilter({ min, max });
+  };
+
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="page-container">
-      <div className="breadcrumb-container">
-        <Breadcrumb />
-      </div>
-
       <div className="category-layout">
-        <FilterSidebar />
+        <FilterSidebar onFilterChange={handleFilterChange} />
 
         <main className="category-content">
-          <h1>Categoría: {id}</h1>
-          <div className="product-grid">
-            {products.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </div>
+          <h1>Categoría: {id ? id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' ') : 'Productos'}</h1>
+
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '2rem' }}>Cargando productos...</div>
+          ) : (
+            <>
+              {filteredProducts.length === 0 ? (
+                <p>No se encontraron productos con los filtros aplicados.</p>
+              ) : (
+                <>
+                  <div className="product-grid">
+                    {currentProducts.map((product) => (
+                      <ProductCard key={product.id} {...product} />
+                    ))}
+                  </div>
+
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                  />
+                </>
+              )}
+            </>
+          )}
         </main>
       </div>
     </div>

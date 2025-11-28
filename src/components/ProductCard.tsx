@@ -25,7 +25,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, description, image
   return (
     <div className="product-card fade-in">
       <div className="product-image-container">
-        <img src={image} alt={title} className="product-image" />
+        <div style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: '#ddd',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#999',
+          fontSize: '0.9rem'
+        }}>
+          Imagen
+        </div>
       </div>
       <div className="product-info">
         <span className="product-id">ID: {id}</span>
