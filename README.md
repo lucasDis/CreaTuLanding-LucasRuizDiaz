@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+<a name="readme-top"></a>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
 
-Currently, two official plugins are available:
+  <h1>🔨 Ferretería Pro</h1>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  <p>
+    Landing page de e-commerce especializada en ferretería, herramientas y materiales de construcción.
+    <br />
+    <a href="#características-principales"><strong>Explorar características »</strong></a>
+    <br />
+    <br />
+    <a href="#capturas-de-pantalla">Ver Demo</a>
+    ·
+    <a href="#instalación">Reportar Bug</a>
+    ·
+    <a href="#instalación">Solicitar Feature</a>
+  </p>
+</div>
 
-## React Compiler
+<details>
+<summary>Tabla de contenidos</summary>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Ferretería Pro](#ferretería-pro)
+- [Características principales](#características-principales)
+  - [Capturas de pantalla](#capturas-de-pantalla)
+- [Para empezar](#para-empezar)
+  - [Prerequisitos](#prerequisitos)
+  - [Instalación](#instalación)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [🛠️ Stack](#️-stack)
 
-## Expanding the ESLint configuration
+</details>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Características principales
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Este proyecto representa la primera entrega del curso de React, enfocándose en la estructura base de componentes y un diseño profesional.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Diseño Mobile First**: Interfaz optimizada para dispositivos móviles, ideal para usuarios en obra.
+- **Navegación Intuitiva**: NavBar simplificado con categorías esenciales (Herramientas, Materiales).
+- **Carrito Interactivo**: Implementación de un `CartSheet` (tipo drawer) para una mejor experiencia de usuario.
+- **Estética Industrial**: Paleta de colores y tipografía seleccionadas para transmitir confianza y profesionalismo.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Capturas de pantalla
+
+_(Espacio reservado para capturas de pantalla)_
+
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+## Para empezar
+
+Sigue estos pasos para levantar el proyecto en tu entorno local.
+
+### Prerequisitos
+
+- Node.js (versión 14 o superior)
+- npm o yarn
+
+### Instalación
+
+1. Clona el repositorio
+
+   ```sh
+   git clone https://github.com/lucasDis/CreaTuLanding-LucasRuizDiaz
+   ```
+
+2. Instala las dependencias
+
+   ```sh
+   npm install
+   ```
+
+3. Ejecuta el proyecto
+   ```sh
+   npm run dev
+   ```
+
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+## Estructura del Proyecto
+
+```
+src/
+├── components/
+│   ├── NavBar.tsx          # Barra de navegación principal
+│   ├── CartWidget.tsx      # Widget del carrito con notificaciones
+│   ├── CartSheet.tsx       # Panel lateral del carrito (Drawer)
+│   └── ItemListContainer.tsx # Contenedor principal
+├── App.tsx                 # Componente raíz
+└── index.css               # Estilos globales y variables CSS
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [![React][react-badge]][react-url] - Biblioteca para interfaces de usuario.
+- [![TypeScript][typescript-badge]][typescript-url] - JavaScript con tipado estático.
+- [![Vite][vite-badge]][vite-url] - Herramienta de build rápida.
+- [![CSS3][css-badge]][css-url] - Estilos con enfoque Mobile First.
+
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+[react-url]: https://reactjs.org/
+[typescript-url]: https://www.typescriptlang.org/
+[vite-url]: https://vitejs.dev/
+[css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[react-badge]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[typescript-badge]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[vite-badge]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white
+[css-badge]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
