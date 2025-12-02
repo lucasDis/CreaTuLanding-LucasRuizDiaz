@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
-// Tipos para el estado del formulario
+
 interface CheckoutFormData {
-    // Datos Tarjeta
+
     cardNumber: string;
     cardName: string;
     cardExpiry: string;
     cardCvc: string;
-    // Datos Envío
+
     fullName: string;
     email: string;
     address: string;
@@ -26,11 +26,11 @@ const CheckoutWizard: React.FC = () => {
     const { totalPrice } = useCart();
     const [currentStep, setCurrentStep] = useState(1);
 
-    // Calcular envío y total
+
     const shippingCost = 1500;
     const finalTotal = totalPrice + shippingCost;
 
-    // Estado único para todos los campos
+
     const [formData, setFormData] = useState<CheckoutFormData>({
         cardNumber: '', cardName: '', cardExpiry: '', cardCvc: '',
         fullName: '', email: '', address: '', city: '', zipCode: ''
@@ -38,23 +38,23 @@ const CheckoutWizard: React.FC = () => {
 
     const [errors, setErrors] = useState<FormErrors>({});
 
-    // Auto-scroll al cambiar paso
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currentStep]);
 
-    // Manejo de cambios en inputs con auto-formato
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         let formatted = value;
 
-        // Auto-formato para número de tarjeta
+
         if (name === 'cardNumber') {
             formatted = value.replace(/\D/g, '').substring(0, 16);
             formatted = formatted.replace(/(.{4})/g, '$1 ').trim();
         }
 
-        // Auto-formato para fecha de vencimiento
+
         if (name === 'cardExpiry') {
             formatted = value.replace(/\D/g, '').substring(0, 4);
             if (formatted.length >= 2) {
@@ -64,7 +64,7 @@ const CheckoutWizard: React.FC = () => {
 
         setFormData(prev => ({ ...prev, [name]: formatted }));
 
-        // Limpiar error al escribir
+
         if (errors[name]) {
             setErrors(prev => {
                 const newErrors = { ...prev };
@@ -74,19 +74,19 @@ const CheckoutWizard: React.FC = () => {
         }
     };
 
-    // Validaciones por paso
+
     const validateStep = (step: number): boolean => {
         const newErrors: FormErrors = {};
         let isValid = true;
 
-        if (step === 1) { // Validación Tarjeta
+        if (step === 1) {
             if (formData.cardNumber.replace(/\s/g, '').length < 16) newErrors.cardNumber = true;
             if (!formData.cardName) newErrors.cardName = true;
             if (formData.cardExpiry.length < 5) newErrors.cardExpiry = true;
             if (formData.cardCvc.length < 3) newErrors.cardCvc = true;
         }
 
-        if (step === 2) { // Validación Domicilio
+        if (step === 2) {
             if (!formData.fullName) newErrors.fullName = true;
             if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = true;
             if (!formData.address) newErrors.address = true;
@@ -117,7 +117,7 @@ const CheckoutWizard: React.FC = () => {
         navigate('/');
     };
 
-    // Renderizado del stepper
+
     const renderStepper = () => {
         const steps = [
             { num: 1, label: 'Pago' },
@@ -142,7 +142,7 @@ const CheckoutWizard: React.FC = () => {
         );
     };
 
-    // --- Renderizado de Pasos ---
+
 
     const renderStep1 = () => (
         <div className="form-section active">

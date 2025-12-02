@@ -4,6 +4,7 @@ import TopBar from './components/TopBar';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import CategoryPage from './pages/CategoryPage';
+import ItemDetailPage from './pages/ItemDetailPage';
 import CheckoutPage from './pages/CheckoutPage';
 import Footer from './components/Footer';
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:id" element={<CategoryPage />} />
+            <Route path="/item/:id" element={<ItemDetailPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
           <Footer />

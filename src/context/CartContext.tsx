@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, type ReactNode } from 'react';
 
-// Definición de tipos
+
 export interface CartItem {
   id: string;
   title: string;
@@ -31,7 +31,7 @@ export const useCart = () => {
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  // Agregar producto al carrito
+
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((i) => i.id === item.id);
@@ -44,20 +44,20 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     });
   };
 
-  // Eliminar producto del carrito
+
   const removeFromCart = (id: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  // Vaciar carrito
+
   const clearCart = () => {
     setCart([]);
   };
 
-  // Calcular total de items
+
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  // Calcular precio total
+
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (

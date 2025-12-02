@@ -29,7 +29,7 @@ const CategoryPage: React.FC = () => {
     }
   }, [id]);
 
-  // Apply price filter
+
   useEffect(() => {
     const filtered = products.filter(p => p.price >= priceFilter.min && p.price <= priceFilter.max);
     setFilteredProducts(filtered);
@@ -40,7 +40,7 @@ const CategoryPage: React.FC = () => {
     setPriceFilter({ min, max });
   };
 
-  // Pagination logic
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
