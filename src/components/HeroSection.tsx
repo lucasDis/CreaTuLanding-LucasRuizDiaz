@@ -5,16 +5,15 @@ const HeroSection: React.FC = () => {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1>Todo lo que necesitás para construir, reparar y crear.</h1>
-        <p>Herramientas profesionales, materiales de alta calidad y el asesoramiento de ferreteros de confianza.</p>
+        <h1>Tipografías premium para proyectos excepcionales.</h1>
+        <p>Fuentes profesionales de alta calidad de las mejores fundiciones del mundo.</p>
         <div className="hero-actions">
-          <Link to="/category/Herramientas" className="btn btn-primary">Ver herramientas destacadas</Link>
-          <Link to="/category/Materiales" className="btn btn-secondary">Explorar materiales</Link>
+          <Link to="/category/serif" className="btn btn-primary">Ver tipografías destacadas</Link>
         </div>
       </div>
       <div className="hero-media">
         <div className="hero-placeholder-image">
-          Imagen de taller / banco de herramientas
+          Muestra de tipografías / Preview de fuentes
         </div>
       </div>
     </section>

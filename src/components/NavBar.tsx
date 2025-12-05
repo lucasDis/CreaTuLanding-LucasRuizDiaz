@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
           {/* Logo */}
           <div className="navbar-logo">
             <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <span style={{ color: 'var(--color-accent)' }}>FERRE</span>TERÍA
+              <span style={{ color: 'var(--color-accent)' }}>TYPE</span>STORE
             </Link>
           </div>
 
@@ -48,7 +48,19 @@ const NavBar: React.FC = () => {
           {/* Enlaces de navegación */}
           <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
-              <Link to="/category/Productos" className="nav-link" onClick={() => setIsOpen(false)}>Productos</Link>
+              <Link to="/category/serif" className="nav-link" onClick={() => setIsOpen(false)}>Serif</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/category/sans-serif" className="nav-link" onClick={() => setIsOpen(false)}>Sans Serif</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/category/monospace" className="nav-link" onClick={() => setIsOpen(false)}>Monospace</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/category/display" className="nav-link" onClick={() => setIsOpen(false)}>Display</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/category/handwriting" className="nav-link" onClick={() => setIsOpen(false)}>Handwriting</Link>
             </li>
           </ul>
 

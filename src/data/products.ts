@@ -30,7 +30,6 @@ export const getProducts = async (): Promise<Product[]> => {
         const data = await response.json();
         return data.products;
     } catch (error) {
-        console.error('Error fetching products:', error);
         throw error;
     }
 };
@@ -44,7 +43,6 @@ export const getProductsByCategory = async (categoryId: string): Promise<Product
         const data = await response.json();
         return data.products;
     } catch (error) {
-        console.error('Error fetching products by category:', error);
         throw error;
     }
 };
@@ -58,7 +56,6 @@ export const getProductById = async (id: number): Promise<Product | undefined> =
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error fetching product by id:', error);
         throw error;
     }
 };
@@ -78,7 +75,6 @@ export const getCategories = async (): Promise<Category[]> => {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error fetching categories:', error);
         throw error;
     }
 };

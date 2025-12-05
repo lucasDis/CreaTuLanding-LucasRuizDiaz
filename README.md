@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h1>🔨 Ferretería Pro</h1>
+  <h1>🔨 Ferretería</h1>
 
   <p>
     Landing page de e-commerce especializada en ferretería, herramientas y materiales de construcción.
@@ -17,7 +17,7 @@
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [Ferretería Pro](#ferretería-pro)
+- [Ferretería](#ferretería)
 - [Características principales](#características-principales)
   - [Capturas de pantalla](#capturas-de-pantalla)
 - [Para empezar](#para-empezar)

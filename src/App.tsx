@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import TopBar from './components/TopBar';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import CategoryPage from './pages/CategoryPage';
@@ -14,7 +13,6 @@ function App() {
     <CartProvider>
       <BrowserRouter>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <TopBar />
           <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />

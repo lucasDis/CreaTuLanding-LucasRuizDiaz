@@ -22,8 +22,7 @@ const Footer: React.FC = () => {
         <div className="footer-column">
           <h3>Secciones</h3>
           <ul>
-            <li><Link to="/category/Herramientas">Herramientas</Link></li>
-            <li><Link to="/category/Materiales">Materiales</Link></li>
+            <li><Link to="/category/serif">Tipografías</Link></li>
             <li><Link to="/#about">Sobre nosotros</Link></li>
           </ul>
         </div>
@@ -31,10 +30,10 @@ const Footer: React.FC = () => {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p>&copy; {new Date().getFullYear()} Ferretería Plus. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} TypeStore. Todos los derechos reservados.</p>
           <div className="footer-help-links">
             <Link to="#">Preguntas frecuentes</Link>
-            <Link to="#">Envíos y devoluciones</Link>
+            <Link to="#">Licencias</Link>
             <Link to="#">Contacto</Link>
           </div>
         </div>

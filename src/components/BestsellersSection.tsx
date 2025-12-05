@@ -16,7 +16,6 @@ const BestsellersSection: React.FC = () => {
           .slice(0, 4);
         setBestsellers(topRated);
       } catch (error) {
-        console.error('Error cargando productos destacados:', error);
       } finally {
         setLoading(false);
       }

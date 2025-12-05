@@ -7,7 +7,7 @@ const PromoBanner: React.FC = () => {
       <div className="promo-inner">
         <h2>Semana del Taladro</h2>
         <p>Hasta 25% OFF en taladros percutores, atornilladores a batería y sets de brocas.</p>
-        <Link to="/category/Herramientas" className="btn btn-light">Aprovechar ofertas</Link>
+        <Link to="/category/beauty" className="btn btn-light">Aprovechar ofertas</Link>
       </div>
     </section>
   );

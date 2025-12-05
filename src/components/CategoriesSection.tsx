@@ -12,7 +12,6 @@ const CategoriesSection: React.FC = () => {
         const cats = await getCategories();
         setCategories(cats.slice(0, 8));
       } catch (error) {
-        console.error('Error cargando categorías:', error);
       } finally {
         setLoading(false);
       }

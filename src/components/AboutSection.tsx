@@ -6,21 +6,21 @@ const AboutSection: React.FC = () => {
     <section id="about" className="section section-about">
       <div className="about-inner">
         <div className="about-text">
-          <h2>Ferretería Plus, tu aliado en cada proyecto</h2>
+          <h2>TypeStore, tu destino para tipografías premium</h2>
           <p>
-            Somos una ferretería con años de experiencia abasteciendo a profesionales de la construcción,
-            industrias y hogares. Seleccionamos herramientas y materiales de primeras marcas para que tu
-            trabajo quede bien desde la primera vez.
+            Somos una tienda especializada en tipografías de alta calidad, ofreciendo
+            fuentes de las mejores fundiciones y diseñadores del mundo para que tus diseños
+            destaquen desde el primer momento.
           </p>
           <p>
-            Nuestro equipo de ferreteros especializados te asesora para elegir la mejor solución, ya sea
-            que estés levantando una obra completa o haciendo un arreglo en casa.
+            Nuestro equipo de especialistas en tipografía te asesora para elegir la fuente perfecta,
+            ya sea que estés trabajando en una identidad corporativa completa o un proyecto personal.
           </p>
           <Link to="/about" className="btn btn-primary">Conocé más sobre nosotros</Link>
         </div>
         <div className="about-media">
           <div className="about-placeholder-image">
-            Foto del equipo de ferretería / local
+            Expertos en tipografía / Catálogo digital
           </div>
         </div>
       </div>
