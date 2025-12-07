@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import Modal from './Modal';
 
 
 interface CheckoutFormData {
@@ -23,12 +24,14 @@ interface FormErrors {
 
 const CheckoutWizard: React.FC = () => {
     const navigate = useNavigate();
-    const { totalPrice } = useCart();
+    const { totalPrice, clearCart } = useCart();
     const [currentStep, setCurrentStep] = useState(1);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [orderNumber, setOrderNumber] = useState<string>('');
 
-
-    const shippingCost = 1500;
-    const finalTotal = totalPrice + shippingCost;
+    // Calcular IVA (21%)
+    const iva = totalPrice * 0.21;
+    const finalTotal = totalPrice + iva;
 
 
     const [formData, setFormData] = useState<CheckoutFormData>({
@@ -113,7 +116,17 @@ const CheckoutWizard: React.FC = () => {
     };
 
     const confirmOrder = () => {
-        alert('¡Compra completada con éxito! Gracias por tu compra.');
+        // Generar número de orden
+        const orderNum = 'ORD-' + Date.now().toString().slice(-8);
+        setOrderNumber(orderNum);
+        
+        // Mostrar modal de éxito
+        setShowSuccessModal(true);
+    };
+
+    const handleCloseSuccessModal = () => {
+        setShowSuccessModal(false);
+        clearCart();
         navigate('/');
     };
 
@@ -363,8 +376,8 @@ const CheckoutWizard: React.FC = () => {
                         <span>${totalPrice.toLocaleString()}</span>
                     </div>
                     <div className="summary-item">
-                        <span>Envío</span>
-                        <span>${shippingCost.toLocaleString()}</span>
+                        <span>IVA (21%)</span>
+                        <span>${iva.toLocaleString()}</span>
                     </div>
                     <div className="summary-total">
                         <span>Total</span>
@@ -376,6 +389,90 @@ const CheckoutWizard: React.FC = () => {
                     </div>
                 </div>
             </div>
+            
+            {/* Modal de éxito */}
+            <Modal 
+                isOpen={showSuccessModal}
+                onClose={handleCloseSuccessModal}
+                title="¡Compra Completada!"
+                type="success"
+                showCloseButton={false}
+            >
+                <p style={{ color: '#666', fontSize: '1.1rem', marginBottom: '2rem' }}>
+                    Tu pedido ha sido procesado exitosamente.
+                </p>
+
+                <div style={{ 
+                    background: '#f8f9fa', 
+                    borderRadius: '12px', 
+                    padding: '1.5rem', 
+                    marginBottom: '2rem' 
+                }}>
+                    <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between', 
+                        marginBottom: '0.75rem' 
+                    }}>
+                        <span style={{ color: '#666' }}>Número de orden:</span>
+                        <span style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
+                            #{orderNumber}
+                        </span>
+                    </div>
+                    <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between',
+                        paddingTop: '0.75rem',
+                        borderTop: '2px solid #e0e0e0'
+                    }}>
+                        <span style={{ color: '#666' }}>Total pagado:</span>
+                        <span style={{ color: 'var(--color-primary)', fontWeight: 600, fontSize: '1.1rem' }}>
+                            ${finalTotal.toFixed(2)}
+                        </span>
+                    </div>
+                </div>
+
+                <div style={{ 
+                    background: '#e8f5e9', 
+                    borderLeft: '4px solid #4CAF50',
+                    borderRadius: '8px',
+                    padding: '1rem 1.5rem',
+                    marginBottom: '2rem',
+                    textAlign: 'left'
+                }}>
+                    <p style={{ margin: '0.5rem 0', color: '#2e7d32', fontSize: '0.9rem' }}>
+                        📧 Recibirás un email de confirmación con los detalles de tu compra.
+                    </p>
+                    <p style={{ margin: '0.5rem 0', color: '#2e7d32', fontSize: '0.9rem' }}>
+                        📦 Las tipografías estarán disponibles para descarga en tu cuenta.
+                    </p>
+                </div>
+
+                <button 
+                    onClick={handleCloseSuccessModal}
+                    style={{
+                        background: 'var(--color-primary)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '8px',
+                        padding: '1rem 2.5rem',
+                        fontSize: '1rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        width: '100%',
+                        transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.background = 'var(--color-accent)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.background = 'var(--color-primary)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                >
+                    Continuar Comprando
+                </button>
+            </Modal>
         </div>
     );
 };

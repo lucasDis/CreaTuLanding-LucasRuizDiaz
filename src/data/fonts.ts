@@ -7,7 +7,9 @@ export const fonts = [
         precio: 29.99,
         descripcion: "Diseñada para ser legible en pantallas.",
         variantes: ["Regular", "Bold", "Italic"],
-        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap",
+        popularidad: 85,
+        ventas: 120
     },
     {
         id: "lora",
@@ -16,7 +18,9 @@ export const fonts = [
         precio: 24.99,
         descripcion: "Serif moderna con matices de caligrafía.",
         variantes: ["Regular", "Bold", "Italic"],
-        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap"
+        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap",
+        popularidad: 92,
+        ventas: 145
     },
     {
         id: "crimson-text",
@@ -25,7 +29,9 @@ export const fonts = [
         precio: 19.99,
         descripcion: "Inspirada en las tipografías del Renacimiento.",
         variantes: ["Regular", "Bold", "Italic"],
-        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap"
+        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap",
+        popularidad: 78,
+        ventas: 95
     },
     {
         id: "pt-serif",
@@ -117,7 +123,9 @@ export const fonts = [
         precio: 29.99,
         descripcion: "Fuente versátil y legible, estándar moderno.",
         variantes: ["Regular", "Bold", "Light"],
-        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+        googleFontsUrl: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap",
+        popularidad: 98,
+        ventas: 200
     },
     {
         id: "open-sans",

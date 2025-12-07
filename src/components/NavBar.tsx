@@ -4,12 +4,7 @@ import CartWidget from './CartWidget';
 import CartSheet from './CartSheet';
 
 const NavBar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -25,44 +20,6 @@ const NavBar: React.FC = () => {
               <span style={{ color: 'var(--color-accent)' }}>TYPE</span>STORE
             </Link>
           </div>
-
-          {/* Menú hamburguesa (móvil) */}
-          <div className="menu-icon" onClick={toggleMenu}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </div>
-
-          {/* Enlaces de navegación */}
-          <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
-            <li className="nav-item">
-              <Link to="/category/serif" className="nav-link" onClick={() => setIsOpen(false)}>Serif</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/category/sans-serif" className="nav-link" onClick={() => setIsOpen(false)}>Sans Serif</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/category/monospace" className="nav-link" onClick={() => setIsOpen(false)}>Monospace</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/category/display" className="nav-link" onClick={() => setIsOpen(false)}>Display</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/category/handwriting" className="nav-link" onClick={() => setIsOpen(false)}>Handwriting</Link>
-            </li>
-          </ul>
 
           {/* Widget del carrito */}
           <div className="cart-container">

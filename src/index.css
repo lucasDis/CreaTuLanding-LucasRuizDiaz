@@ -1,13 +1,13 @@
 :root {
-  --color-primary: #2C3E50;
-  --color-secondary: #95A5A6;
-  --color-accent: #F1C40F;
-  --color-accent-hover: #D4AC0D;
-  --color-bg-light: #ECF0F1;
+  --color-primary: #2c3e50;
+  --color-secondary: #95a5a6;
+  --color-accent: #f1c40f;
+  --color-accent-hover: #d4ac0d;
+  --color-bg-light: #ecf0f1;
   --color-text-dark: #212121;
-  --color-text-light: #FFFFFF;
-  --color-danger: #E74C3C;
-  
+  --color-text-light: #ffffff;
+  --color-danger: #e74c3c;
+
   /* Gradientes */
   --gradient-bg: linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
 }
@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: var(--color-bg-light);
   color: var(--color-text-dark);
   line-height: 1.5;
@@ -29,8 +29,14 @@ body {
 
 /* Animaciones */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in {
@@ -48,7 +54,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
 
@@ -161,27 +167,133 @@ body {
 }
 
 .filter-sidebar {
-  width: 250px;
-  padding: 2rem;
+  width: 280px;
+  padding: 1.5rem;
   background-color: white;
   border-right: 1px solid #eee;
   flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.filter-header h3 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 1.3rem;
+}
+
+.clear-filters-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.clear-filters-btn:hover {
+  opacity: 0.7;
 }
 
 .filter-group {
   margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-group:last-child {
+  border-bottom: none;
 }
 
 .filter-group h4 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
-.filter-group label {
-  display: block;
-  margin-bottom: 0.3rem;
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: color 0.3s;
+}
+
+.filter-checkbox:hover {
+  color: var(--color-accent);
+}
+
+.filter-checkbox input[type="checkbox"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.slider-container {
+  margin-top: 0.5rem;
+}
+
+.variants-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.variants-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.variants-slider::-webkit-slider-thumb:hover {
+  background: var(--color-accent);
+}
+
+.variants-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s;
+}
+
+.variants-slider::-moz-range-thumb:hover {
+  background: var(--color-accent);
+}
+
+.slider-value {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  font-weight: 600;
 }
 
 .category-content {
@@ -282,7 +394,7 @@ body {
 .footer-bottom {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.9rem;
 }
 
@@ -449,6 +561,41 @@ body {
 
 .remove-btn:hover {
   opacity: 0.7;
+}
+
+/* Controles de cantidad */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.quantity-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  line-height: 1;
+}
+
+.quantity-btn:hover {
+  background-color: #34495e;
+}
+
+.quantity-display {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .cart-sheet-footer {
@@ -626,7 +773,7 @@ body {
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
@@ -634,7 +781,7 @@ body {
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .product-image-container {
@@ -746,7 +893,7 @@ body {
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .category-image {
@@ -785,7 +932,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .testimonial-card blockquote {
@@ -908,13 +1055,13 @@ body {
     font-size: 1.8rem;
     cursor: pointer;
   }
-  
+
   .cart-container {
-      margin-right: 40px; /* Espacio para el menú hamburguesa */
+    margin-right: 40px; /* Espacio para el menú hamburguesa */
   }
 
   .greeting-message {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .category-layout {
@@ -932,6 +1079,127 @@ body {
   }
 }
 
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-close:hover {
+  color: var(--color-primary);
+}
+
+.modal-icon {
+  margin: 0 auto 1.5rem;
+  animation: scaleIn 0.5s ease 0.2s both;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.modal-icon.success-icon svg {
+  filter: drop-shadow(0 4px 8px rgba(76, 175, 80, 0.3));
+}
+
+.modal-icon.error-icon svg {
+  filter: drop-shadow(0 4px 8px rgba(231, 76, 60, 0.3));
+}
+
+.modal-icon.warning-icon {
+  font-size: 4rem;
+}
+
+.modal-title {
+  color: var(--color-primary);
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.modal-body {
+  color: #666;
+}
+
+/* Modal variants */
+.modal-success .modal-title {
+  color: #4CAF50;
+}
+
+.modal-error .modal-title {
+  color: #E74C3C;
+}
+
+.modal-warning .modal-title {
+  color: #FF9800;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+}
+
+
 /* --- Estilos del Checkout (Mejorados desde ejemplo) --- */
 
 /* Stepper (Indicador de Progreso) */
@@ -943,7 +1211,7 @@ body {
 }
 
 .checkout-steps::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 20px;
   left: 50%;
@@ -1012,13 +1280,12 @@ body {
   align-items: flex-start;
 }
 
-
 .checkout-main {
   flex: 2;
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .checkout-sidebar {
@@ -1026,7 +1293,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 100px;
 }
@@ -1165,15 +1432,15 @@ body {
   .checkout-layout {
     flex-direction: column;
   }
-  
+
   .checkout-sidebar {
     position: static;
   }
-  
+
   .checkout-steps::before {
     width: 150px;
   }
-  
+
   .form-grid {
     grid-template-columns: 1fr;
   }

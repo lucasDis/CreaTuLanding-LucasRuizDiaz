@@ -7,8 +7,9 @@ interface CartSheetProps {
   onClose: () => void;
 }
 
+// Drawer lateral del carrito (sheet component)
 const CartSheet: React.FC<CartSheetProps> = ({ isOpen, onClose }) => {
-  const { cart, removeFromCart, totalPrice } = useCart();
+  const { cart, removeFromCart, incrementQuantity, decrementQuantity, totalPrice } = useCart();
   const navigate = useNavigate();
 
   const handleCheckout = () => {
@@ -20,11 +21,10 @@ const CartSheet: React.FC<CartSheetProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Fondo oscuro */}
       <div className="cart-sheet-overlay" onClick={onClose} />
 
-      {/* Panel del carrito */}
       <div className="cart-sheet">
+        {/* Header del sheet */}
         <div className="cart-sheet-header">
           <h2>Tu Carrito</h2>
           <button className="cart-sheet-close" onClick={onClose}>
@@ -45,42 +45,49 @@ const CartSheet: React.FC<CartSheetProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
+        {/* Listado de items */}
         <div className="cart-sheet-body">
           {cart.length === 0 ? (
             <div className="cart-empty">
               <p>Tu carrito está vacío</p>
             </div>
           ) : (
-            <ul className="cart-list">
-              {cart.map((item) => (
-                <li key={item.id} className="cart-item">
-                  <img src={item.image} alt={item.title} className="cart-item-image" />
-                  <div className="cart-item-details">
-                    <h4>{item.title}</h4>
-                    <p className="cart-item-price">${item.price.toLocaleString()}</p>
-                    <p className="cart-item-quantity">Cantidad: {item.quantity}</p>
+            cart.map((item) => (
+              <div key={item.id} className="cart-item">
+                <img src={item.image} alt={item.title} className="cart-item-image" />
+                <div className="cart-item-details">
+                  <h3>{item.title}</h3>
+                  <p className="cart-item-price">${item.price.toLocaleString()}</p>
+                  
+                  {/* Controles de cantidad */}
+                  <div className="cart-item-quantity">
+                    <button onClick={() => decrementQuantity(item.id)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => incrementQuantity(item.id)}>+</button>
                   </div>
-                  <button
-                    className="remove-btn"
-                    onClick={() => removeFromCart(item.id)}
-                    title="Eliminar del carrito"
-                  >
-                    ×
-                  </button>
-                </li>
-              ))}
-            </ul>
+                </div>
+                
+                <button
+                  className="cart-item-remove"
+                  onClick={() => removeFromCart(item.id)}
+                  aria-label="Eliminar del carrito"
+                >
+                  ✕
+                </button>
+              </div>
+            ))
           )}
         </div>
 
+        {/* Footer con total y checkout */}
         {cart.length > 0 && (
           <div className="cart-sheet-footer">
             <div className="cart-total">
               <span>Total:</span>
               <span>${totalPrice.toLocaleString()}</span>
             </div>
-            <button className="btn btn-primary checkout-btn" onClick={handleCheckout}>
-              Finalizar Compra
+            <button className="cart-checkout-button" onClick={handleCheckout}>
+              Ir al Checkout
             </button>
           </div>
         )}
